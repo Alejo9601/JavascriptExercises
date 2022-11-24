@@ -23,9 +23,6 @@ const getNextStartingRound = (time) => {
         
     }
 
-    console.log("Next starting round: ")
-    console.log(nextRoundTime)
-
     return nextRoundTime
 }
 
@@ -53,15 +50,14 @@ const johnGames = (A, B) => {
 
             for(let i = currentRound.hour; i <= endingTime.hour; i++) {
                 for(let j = currentRound.minutes; j <= endingTime.minutes; j+=15) {              
-                    if(currentRound.minutes + 15 > endingTime.minutes && currentRound.hour === endingTime.hour)  {
+                    if(currentRound.minutes + 15 > endingTime.minutes && i === endingTime.hour)  {
                         break
                     }
+                    console.log(currentRound) 
                     roundsCount++
-                    currentRound.minutes += 15  
+                    currentRound.minutes += 15 
                 }
                 currentRound = getNextStartingRound({hour: currentRound.hour, minutes: currentRound.minutes})
-                console.log("De: " + startingTime.hour + ":" + startingTime.minutes)
-                console.log("hasta: " + currentRound.hour + ":" + currentRound.minutes)
                 console.log("hice: " + roundsCount)
             }
         }
