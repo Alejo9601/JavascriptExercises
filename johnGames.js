@@ -49,10 +49,10 @@ const johnGames = (A, B) => {
             let currentRound = getNextStartingRound(startingTime)
 
             for(let i = currentRound.hour; i <= endingTime.hour; i++) {
-                for(let j = currentRound.minutes; j <= endingTime.minutes; j+=15) {              
+                for(let j = currentRound.minutes; j < 60; j+=15) {   
                     if(currentRound.minutes + 15 > endingTime.minutes && i === endingTime.hour)  {
                         break
-                    }
+                    }           
                     console.log(currentRound) 
                     roundsCount++
                     currentRound.minutes += 15 
@@ -66,7 +66,8 @@ const johnGames = (A, B) => {
     return roundsCount
 }
 
-console.log(johnGames("11:00","12:45"))
+console.log(johnGames("11:00","12:29"))
+console.log(johnGames("11:45","11:00"))
 //console.log(johnGames("11:00","13:00"))
 
 // console.log(johnGames("10:00","12:45"))
